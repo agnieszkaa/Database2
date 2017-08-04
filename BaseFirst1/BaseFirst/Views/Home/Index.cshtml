@@ -1,12 +1,42 @@
-﻿@model IEnumerable<BaseFirst.Models.Kontakty>
+﻿@model IEnumerable<BaseFirst.Contact>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>People</h2>
 
-@foreach(var item in Model)
-{
-    @item.NAme;
-    @item.SureNAme;
-}
+
+
+<form action="http://localhost:55112/Home/Editor">
+    <button>Add</button>
+</form> 
+
+<br />
+<br/>
+<table border="2" width="300" height="150">
+    <tr bgcolor="Gainsboro">
+        <td>name</td>
+        <td>lastname</td>
+        <td></td>
+    </tr>
+    
+    @foreach (BaseFirst.Contact item in this.Model)
+    {
+
+
+        <tr>
+            <td> @item.NAme</td>
+
+            <td> @item.LastNAme</td>
+
+            <td> @Html.ActionLink("Delete", "Dalete", new { id = item.Id })</td>
+            @*<td>
+                <form action="http://localhost:55112/Home/Dalete" >
+                    
+                    <button>Delete</button>
+                </form>
+            </td>*@
+        </tr>
+
+     }
+</table>
